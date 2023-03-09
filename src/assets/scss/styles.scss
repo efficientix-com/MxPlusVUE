@@ -1,0 +1,415 @@
+// Variables 
+
+$widthContent: 95%; //area de trabajo cuando se expande o minimiza menu
+$height: 100%;
+$top: 90px; //Este se deja por el menú de Netsuite
+$menuBarColor: #303237; // color de fondo de barra de navegación
+$h3Size: 25px !important; // Está en important porque Netsuite sobreescribe
+$textWhite: #f2f2f2;
+$green-2: #52bf90;
+
+
+// Por si usas position:relative este te respete el height 100%
+html,
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0 !important;
+}
+
+// App engloba toda la página
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: $menuBarColor;
+    // height: $height;
+    width: 100%;
+    position: fixed;
+    top: $top;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    overflow-y: auto;
+
+}
+
+h3 {
+    font-size: 25px !important;
+    font-weight: 300;
+}
+
+// Oculta el título del suitelet
+.uir-page-title {
+    display: none;
+}
+
+
+
+// Estilos pie de página de freebug
+div:has(.expanded) {
+    #module-component {
+        width: 100%;
+        height: $height;
+        // display: flex;
+        // position: relative;
+        // flex-direction: column;
+        overflow: auto;
+        overflow-y: auto;
+        display: grid;
+        grid-template-columns: 16rem 1fr;
+
+
+    }
+
+    #footer-component {
+        padding: 1rem;
+        background-color: transparent;
+        text-align: center;
+        z-index: 2;
+        grid-column: 2 / 4;
+        grid-row: 3 / 4;
+        transition: width 0.3s;
+        font-size: 14px;
+        color: $green-2;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+    }
+
+    // Estilos de Card como componente general
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        border-radius: 20px;
+        width: $widthContent;
+        // height: 90%;
+        padding: 20px;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        z-index: 1;
+        grid-column: 2 / 4;
+    }
+}
+
+div:has(.collapsed) {
+    #module-component {
+        width: 100%;
+        height: $height;
+        overflow: auto;
+        overflow-y: auto;
+        display: grid;
+        grid-template-columns: 5rem 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
+    }
+
+    #footer-component {
+        padding: 1rem;
+        background-color: transparent;
+        text-align: center;
+        z-index: 2;
+        grid-column: 2 / 4;
+        grid-row: 3 / 4;
+        transition: width 0.3s;
+        font-size: 14px;
+        color: $green-2;
+
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+
+    }
+
+    // Estilos de Card como componente general
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        border-radius: 20px;
+        width: $widthContent;
+        // height: 45rem;
+        padding: 20px;
+        margin: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        grid-column: 2 / 4;
+    }
+
+}
+
+
+
+
+
+//******************************** Menú***********************************
+.menu {
+    background-color: $menuBarColor;
+    color: $textWhite;
+    transition: width 0.3s;
+    font-family: Arial, Helvetica, sans-serif;
+    // :position: relative;
+    position: absolute;
+    height: 100%;
+    bottom: 0px;
+
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+}
+
+.menu-button {
+    border: none;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    color: $textWhite;
+    padding: 10px;
+}
+
+.collapsed {
+    width: 70px;
+    // grid-row: 1 / 3;
+}
+
+.expanded {
+    width: 250px;
+    // grid-row: 2 / 3;
+}
+
+.profile {
+    padding: 7px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.profile img {
+    border-radius: 0%;
+    min-width: 50px;
+    max-width: 140px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.profile-name {
+    padding: 10px 0;
+    font-size: 18px;
+}
+
+.menu-items ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+// Estilos de campos
+textarea,
+select,
+input {
+    border-radius: 10px;
+    border: 1px solid #eee;
+    transition: 0.3s border-color;
+    padding: 10px;
+    max-width: 270px;
+}
+input{
+padding: 7px !important;
+
+}
+
+.txtAreaEmail,
+.asuntoEmail {
+    width: 30rem;
+}
+
+input:hover {
+    border: 1px solid #aaa;
+}
+
+input:active {
+    border: 1px solid #969696;
+}
+
+label {
+    margin-right: 7px;
+    font-size: 0.965rem;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.email {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    // margin-right: 20px;
+    // margin-left: 20px;
+}
+
+#module-form {
+    width: 100%;
+    max-width: 1050px;
+    //  max-height: auto; 
+    height: auto;
+    /* aspect-ratio: 100 / 65; */
+
+    margin: auto;
+    display: flex;
+    transition: width 0.5s;
+    // justify-content: space-between;
+
+    font-size: 16px;
+}
+
+// Formato de tablas
+#list table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+#list table th,
+#list table td {
+    text-align: center;
+    padding: 8px;
+    font-size: 0.85rem;
+}
+
+#list table th {
+    border-bottom: 1px solid #f2f2f2;
+}
+
+#list table tbody tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+// Botones para desplegar modal
+.btnTriggerModal{
+    cursor: pointer;
+    color: $green-2;
+}
+// MODAL
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #000000da;
+    overflow: auto;
+    overflow-y: auto;
+    z-index: 0;
+
+  }
+
+  
+  .modal {
+    text-align: center;
+    background-color: white;
+    height: 50rem;
+    width: 1000px;
+    position: absolute;
+    top: 150px;
+    padding-bottom: 60px;
+    border-radius: 20px;
+    z-index: 0;
+    
+  }
+  .close {
+    cursor: pointer;
+    color:$green-2;
+  }
+  
+  
+  .check {
+    width: 150px;
+  }
+  
+  h6 {
+    font-weight: 500;
+    font-size: 28px;
+    margin: 20px 0;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 20px 0;
+  }
+  
+  .buttonConfirm {
+    background-color: #ac003e;
+    width: 150px;
+    height: 40px;
+    color: white;
+    font-size: 14px;
+    border-radius: 16px;
+    margin-top: 50px;
+  }
+  .modalHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  h4 {
+    font-weight: 500 !important;
+    font-size: 20px !important;
+    padding-bottom: 15px;
+  }
+  div:has(.shown){
+    #footer-component{
+        display: none;
+    }
+  }
+.rowHeader{
+    color:#52bf90;
+    font-size: 18px;
+    // padding-left:30px;
+    border-bottom: 1.5px solid;
+    width:930px;
+    font-weight: 600;
+    margin-left:20px;
+}
+.rowModal{
+    
+    padding-left:30px;
+    margin-left:20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+    align-items: center;
+    margin-bottom: 0px;
+    margin-right:45px;
+}
+.lastRow{
+    padding-bottom: 28px;
+}
+.mt-2{
+    padding-top:20px;
+}
+.rowModalEmail {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
