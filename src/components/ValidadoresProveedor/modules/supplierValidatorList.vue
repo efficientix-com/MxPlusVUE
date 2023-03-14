@@ -70,12 +70,12 @@
         </div>
         <div class="modalBody">
           <div>
-            <h4>¡Registro actualizado con éxito!</h4>
+            <h4>{{msgAlert}}</h4>
           </div>
         </div>
       </div>
     </div>
-    <!-- modal -->
+    <!-- modal formulario -->
     <div
       :class="showModal ? 'modal-overlay shown' : 'modal-overlay modalHidden'"
       class="modal-overlay"
@@ -107,6 +107,7 @@
                   :disabled="isBeingEdited"
                   :value="configurations[idModalToView].name"
                 />
+                <small class="danger-text" v-show="(msgAlert.includes('Error'))" >{{msgAlert}}</small>
               </div>
             </div>
             <div class="column">
@@ -400,6 +401,7 @@ export default {
     return {
       isBeingEdited: true,
       idToEdit: null,
+      msgAlert:"",
       configurations: [
         // {
         //   id: "1",
@@ -763,7 +765,7 @@ export default {
         custrecord_efx_pp_mandatory_xml:
           this.$refs.custrecord_efx_pp_mandatory_xml.checked,
       };
-      console.log("Nombre ingresado: ", objEditedData);
+      console.log("DATOS INGRESADOS: ", objEditedData);
       this.sendData(objEditedData);
     },
     sendData(objToSend) {
@@ -781,12 +783,7 @@ export default {
           (str += ' scriptId:"customscript_tkio_mxplus_testrequest_sl",'),
           (str += ' deploymentId:"customdeploy_tkio_mxplus_testrequest_sl",'),
           (str += "returnExternalUrl:false,"),
-          (str += " params:{sendEditRecord:true}"),
-          (str += "});"),
-          (str += "https.post({"),
-          (str += " url:url,"),
-          (str += " headers:{},"),
-          (str += "body:{bodyEdit:'" + strData + "'}"),
+          (str += " params:{sendEditRecord:true,bodyEdit:'" + strData + "'}"),
           (str += "});"),
           (str += "self.getConfigAxiosResponseEdit(url)"),
           (str += "});"),
@@ -810,10 +807,15 @@ export default {
         .request(t)
         .then((b) => {
           console.log("RESPONSE FROM NS: ", b.data);
-          this.showModal = false;
-          this.showModalSuccess = true;
-          this.getBlockStatusList();
-          this.getConfigurations();
+          this.msgAlert=b.data;
+          if(this.msgAlert.includes('Error')){
+            this.showModalSuccess = false;
+          }else{
+            this.showModal = false;
+            this.showModalSuccess = true;
+            this.getBlockStatusList();
+            this.getConfigurations();
+          }
         })
         .catch((err) => {
           console.log("Hubo errores: ", err);

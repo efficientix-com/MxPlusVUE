@@ -21,19 +21,15 @@
               src="https://tstdrv2220309.app.netsuite.com/core/media/media.nl?id=42020&c=TSTDRV2220309&h=9G6kn8LO3RrsVXPtyTQ1zGdwHg7e22xBa-AZKIBVg3ePAJT-&_xt=.svg"
               alt="iconSucess"
             />
-            <span class="number">
+            <p class="number">
               {{ item }}
-            </span>
+            </p>
           </div>
-          <span class="stepper-item-title" v-if="item == 1"> Generales </span>
-          <span class="stepper-item-title" v-if="item == 2"> Correos </span>
-          <span class="stepper-item-title" v-if="item == 3">
-            Correos de error
-          </span>
-          <span class="stepper-item-title" v-if="item == 4">
-            Listas Negras
-          </span>
-          <span class="stepper-item-title" v-if="item == 5"> Archivos </span>
+          <p class="stepper-item-title" v-if="item == 1">Generales</p>
+          <p class="stepper-item-title" v-if="item == 2">Correos</p>
+          <p class="stepper-item-title" v-if="item == 3">Correos de error</p>
+          <p class="stepper-item-title" v-if="item == 4">Listas Negras</p>
+          <p class="stepper-item-title" v-if="item == 5">Archivos</p>
         </div>
       </div>
       <!-- Contenido del stepper -->
@@ -42,10 +38,8 @@
         <div class="stepper-pane" v-if="step == 1 && step == item">
           <div class="row">
             <div class="column">
-              <div class="row">
-                <label for="txtName">Nombre</label>
-                <input type="text" name="txtName" />
-              </div>
+              <label for="name">Nombre</label>
+              <input type="text" name="name" ref="name" />
             </div>
           </div>
 
@@ -54,10 +48,11 @@
               <div class="row">
                 <input
                   type="checkbox"
-                  name="limitTransQuantity"
-                  id="limitTransQuantity"
+                  name="custrecord_efx_pp_tran_limit"
+                  id="custrecord_efx_pp_tran_limit"
+                  ref="custrecord_efx_pp_tran_limit"
                 />
-                <label for="limitTransQuantity"
+                <label for="custrecord_efx_pp_tran_limit"
                   >Limitar a cantidad en transacción</label
                 >
               </div>
@@ -66,10 +61,11 @@
               <div class="row">
                 <input
                   type="checkbox"
-                  name="inactiveCheck"
-                  id="inactiveCheck"
+                  name="isinactive"
+                  id="isinactive"
+                  ref="isinactive"
                 />
-                <label for="inactiveCheck">Inactivo</label>
+                <label for="isinactive">Inactivo</label>
               </div>
             </div>
           </div>
@@ -79,28 +75,26 @@
         <div class="stepper-pane" v-if="step == 2 && step == item">
           <div class="email">
             <div class="column">
-              <div class="row">
-                <label for="txtAsuntoCorreo">Título de correo</label>
-                <input
-                  type="text"
-                  name="txtAsuntoCorreo"
-                  id="txtAsuntoCorreo"
-                  class="asuntoEmail"
-                />
-              </div>
+              <label for="txtAsuntoCorreo">Título de correo</label>
+              <input
+                type="text"
+                name="custrecord_efx_pp_mail_subjec"
+                id="custrecord_efx_pp_mail_subjec"
+                ref="custrecord_efx_pp_mail_subjec"
+                class="asuntoEmail"
+              />
             </div>
           </div>
           <div class="email">
             <div class="column">
-              <div class="row">
-                <label for="txtCorreo">Cuerpo de correo</label>
-                <textarea
-                  name="txtCorreo"
-                  id="txtCorreo"
-                  class="txtAreaEmail"
-                  rows="5"
-                ></textarea>
-              </div>
+              <label for="custrecord_efx_pp_mail_body">Cuerpo de correo</label>
+              <textarea
+                name="custrecord_efx_pp_mail_body"
+                id="custrecord_efx_pp_mail_body"
+                ref="custrecord_efx_pp_mail_body"
+                class="txtAreaEmail"
+                rows="5"
+              ></textarea>
             </div>
           </div>
         </div>
@@ -109,62 +103,124 @@
         <div class="stepper-pane" v-if="step == 3 && step == item">
           <div class="email">
             <div class="column">
-              <div class="row">
-                <label for="txtAsuntoCorreo">Título de correo error</label>
-                <input
-                  type="text"
-                  name="txtAsuntoCorreo"
-                  id="txtAsuntoCorreo"
-                  class="asuntoEmail"
-                />
-              </div>
+              <label for="custrecord_efx_pp_mail_subject_error"
+                >Título de correo error</label
+              >
+              <input
+                type="text"
+                name="custrecord_efx_pp_mail_subject_error"
+                id="custrecord_efx_pp_mail_subject_error"
+                ref="custrecord_efx_pp_mail_subject_error"
+                class="asuntoEmail"
+              />
             </div>
           </div>
           <div class="email">
             <div class="column">
-              <div class="row">
-                <label for="txtCorreo">Cuerpo de correo error</label>
-                <textarea
-                  name="txtCorreo"
-                  id="txtCorreo"
-                  class="txtAreaEmail"
-                  rows="5"
-                ></textarea>
-              </div>
+              <label for="custrecord_efx_pp_mail_body_error"
+                >Cuerpo de correo error</label
+              >
+              <textarea
+                name="custrecord_efx_pp_mail_body_error"
+                id="custrecord_efx_pp_mail_body_error"
+                ref="custrecord_efx_pp_mail_body_error"
+                class="txtAreaEmail"
+                rows="5"
+              ></textarea>
             </div>
           </div>
         </div>
         <!-- Contenido PASO 4 -->
         <div class="stepper-pane" v-if="step == 4 && step == item">
           <div class="row">
-            <div class="column">
+            <div class="column columnSelect">
               <div>
                 <label for="txtName">Block Status</label>
               </div>
-              <div>
-                <select name="cars" id="cars" multiple>
-                  <option value="Definitivos">Definitivos</option>
-                  <option value="Desvirtuados">Desvirtuados</option>
-                  <option value="Presuntos">Presuntos</option>
-                  <option value="Sentenciasfavorables">
-                    Sentencias favorables
-                  </option>
-                </select>
+              <!-- Arreglo de multiselect -->
+              <div class="multiselect">
+                <div class="leftSelect">
+                  <div
+                    class="cheto"
+                    v-for="(selected, index) in selectedBlockStatusList"
+                    :key="selected.value"
+                  >
+                    {{ selected.text }}
+                    <font-awesome-icon
+                      class="circleXMark"
+                      icon="fa-solid 
+                            fa-circle-xmark"
+                      size="1x"
+                      @click="
+                        removeOptionBlockList(selected.value, selected.text)
+                      "
+                    />
+                    <br v-if="index % 2 != 0" />
+                  </div>
+                </div>
+                <div class="rightSelect">
+                  |
+                  <font-awesome-icon
+                    @click="showDropdownBlock = !showDropdownBlock"
+                    class="dropdownChevron"
+                    icon="fa-solid fa-circle-chevron-down"
+                    size="1x"
+                  />
+                </div>
+              </div>
+              <!-- Dropdown del multiselect -->
+              <div v-show="showDropdownBlock" class="multiselectDropdown">
+                <div v-for="block in auxBlockStatusList" :key="block.value">
+                  <div @click="pushSelectedBlockList(block.value, block.text)">
+                    {{ block.text }}
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="column">
+            <div class="column columnSelect">
               <div>
                 <label for="txtName">Warning Status</label>
               </div>
-              <div>
-                <select name="cars" id="cars" multiple>
-                  <option value="Definitivos">Definitivos</option>
-                  <option value="Desvirtuados">Desvirtuados</option>
-                  <option value="Presuntos">Presuntos</option>
-                  <option value="Sentenciasfavorables">
-                    Sentencias favorables
-                  </option>
-                </select>
+              <!-- Arreglo de multiselect -->
+              <div class="multiselect">
+                <div class="leftSelect">
+                  <!-- <p> -->
+                  <div
+                    class="cheto"
+                    v-for="(selected, index) in selectedBlockStatusList"
+                    :key="selected.value"
+                  >
+                    {{ selected.text }}
+                    <font-awesome-icon
+                      class="circleXMark"
+                      icon="fa-solid 
+                            fa-circle-xmark"
+                      size="1x"
+                      @click="
+                        removeOptionBlockList(selected.value, selected.text)
+                      "
+                    />
+                    <br v-if="index % 2 != 0" />
+                  </div>
+                  <!-- </p> -->
+                </div>
+                <div class="rightSelect">
+                  |
+                  <font-awesome-icon
+                    @click="showDropdownBlock = !showDropdownBlock"
+                    class="dropdownChevron"
+                    icon="fa-solid fa-circle-chevron-down"
+                    size="1x"
+                  />
+                </div>
+              </div>
+              <!-- Dropdown del multiselect -->
+              <div v-show="showDropdownBlock" class="multiselectDropdown">
+                <div v-for="block in auxBlockStatusList" :key="block.value">
+                  <div @click="pushSelectedBlockList(block.value, block.text)">
+                    {{ block.text }}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -194,9 +250,7 @@
                   name="limitTransQuantity"
                   id="limitTransQuantity"
                 />
-                <label for="limitTransQuantity"
-                  >PDF Mandatory</label
-                >
+                <label for="limitTransQuantity">PDF Mandatory</label>
               </div>
             </div>
             <div class="column">
@@ -218,29 +272,22 @@
                   name="limitTransQuantity"
                   id="limitTransQuantity"
                 />
-                <label for="limitTransQuantity"
-                  >Evidence Mandatory</label
-                >
+                <label for="limitTransQuantity">Evidence Mandatory</label>
               </div>
             </div>
-            <div class="column">
-              <div class="row">
-                <label for="txtName">Ext. for evidence</label>
-                <input type="text" name="txtName" />
-              </div>
+            <div class="column mr-2">
+              <label for="txtName">Ext. for evidence</label>
+              <input type="text" name="txtName" />
             </div>
           </div>
         </div>
       </div>
       <div class="controls">
         <div :hidden="step === 1">
-
-          <div class="btn" @click="step--;" >
-            Anterior
-          </div>
+          <div class="btn" @click="step--">Anterior</div>
         </div>
-        <div class="btn btn--green-1" @click="step==5?step:step++" >
-          {{(step==5?'Guardar':'Siguiente')}}
+        <div class="btn btn--green-1" @click="step == 5 ? step : step++">
+          {{ step == 5 ? "Guardar" : "Siguiente" }}
         </div>
       </div>
     </div>
@@ -257,6 +304,27 @@ export default {
     return {
       step: 1,
       list: [],
+      showDropdownBlock: false,
+      selectedBlockStatusList: [],
+      blockStatusList: [
+        {
+          value: "1",
+          text: "Definitivos2",
+        },
+        {
+          value: "2",
+          text: "Desvirtuados",
+        },
+        {
+          value: "3",
+          text: "Presuntos",
+        },
+        {
+          value: "4",
+          text: "Sentencias favorables",
+        },
+      ],
+      auxBlockStatusList: [],
     };
   },
   computed: {
@@ -268,9 +336,45 @@ export default {
     // this.getList();
     // TestList es para pruebas de recepción e inserción de datos en pantalla
     // this.testList();
+    this.auxBlockStatusList = this.blockStatusList;
+    this.selectedBlockStatusList = [];
   },
   methods: {
-   
+    removeOptionBlockList(key, text) {
+      console.log("Remove: ", key);
+      if (this.selectedBlockStatusList) {
+        let newSelectedBlockStatusList = this.selectedBlockStatusList.filter(
+          (element) => element.value !== key
+        );
+        this.selectedBlockStatusList = newSelectedBlockStatusList;
+        console.log(this.selectedBlockStatusList);
+        this.auxBlockStatusList.push({
+          value: key,
+          text: text,
+        });
+      }
+    },
+    pushSelectedBlockList(key, text) {
+      let exists = false;
+
+      for (let i = 0; i < this.selectedBlockStatusList.length; i++) {
+        if (this.selectedBlockStatusList[i].value == key) {
+          exists = true;
+          break;
+        }
+      }
+
+      if (exists == false) {
+        this.selectedBlockStatusList.push({
+          value: key,
+          text: text,
+        });
+        let newAuxBlockStatusList = this.auxBlockStatusList.filter(
+          (option) => option.value != key
+        );
+        this.auxBlockStatusList = newAuxBlockStatusList;
+      }
+    },
     getList() {
       try {
         let self = this;

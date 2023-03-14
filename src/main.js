@@ -11,7 +11,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /* import specific icons */
-import { faUserSecret,faBars,faFire,faHomeUser,faScrewdriverWrench,faCircleExclamation,faGears,faUserGraduate, faTruckField, faRectangleXmark } from '@fortawesome/free-solid-svg-icons'
+import { faUserSecret,faBars,faFire,faHomeUser,faScrewdriverWrench,faCircleExclamation,faGears,faUserGraduate, faTruckField, faRectangleXmark,faCircleChevronDown, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
 library.add(faUserSecret)
@@ -24,6 +24,8 @@ library.add(faUserGraduate)
 library.add(faGears)
 library.add(faTruckField)
 library.add(faRectangleXmark)
+library.add(faCircleChevronDown)
+library.add(faCircleXmark)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 Vue.use(VueRouter);

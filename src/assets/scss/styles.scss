@@ -1,5 +1,5 @@
 // Variables 
-
+$font-family-sans-serif: "Segoe UI", sans-serif;
 $widthContent: 95%; //area de trabajo cuando se expande o minimiza menu
 $height: 100%;
 $top: 90px; //Este se deja por el menú de Netsuite
@@ -7,6 +7,8 @@ $menuBarColor: #303237; // color de fondo de barra de navegación
 $h3Size: 25px !important; // Está en important porque Netsuite sobreescribe
 $textWhite: #f2f2f2;
 $green-2: #52bf90;
+$green-3: #2fb179;
+$fontColor: #222528;
 
 
 // Por si usas position:relative este te respete el height 100%
@@ -19,10 +21,10 @@ body {
 
 // App engloba toda la página
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: $font-family-sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
+    // text-align: center;
     color: $menuBarColor;
     // height: $height;
     width: 100%;
@@ -38,6 +40,7 @@ body {
 h3 {
     font-size: 25px !important;
     font-weight: 300;
+    text-align: center;
 }
 
 // Oculta el título del suitelet
@@ -47,7 +50,6 @@ h3 {
 
 
 
-// Estilos pie de página de freebug
 div:has(.expanded) {
     #module-component {
         width: 100%;
@@ -58,10 +60,11 @@ div:has(.expanded) {
         overflow: auto;
         overflow-y: auto;
         display: grid;
-        grid-template-columns: 16rem 1fr;
-
-
+        grid-template-columns: 13.4rem 1fr;
+        
+        
     }
+    // Estilos pie de página de freebug
 
     #footer-component {
         padding: 1rem;
@@ -176,7 +179,8 @@ div:has(.collapsed) {
 }
 
 .expanded {
-    width: 250px;
+    width: 210px;
+    text-align: center;
     // grid-row: 2 / 3;
 }
 
@@ -206,36 +210,72 @@ div:has(.collapsed) {
 }
 
 // Estilos de campos
+.multiselectDropdown,
+.multiselect,
 textarea,
 select,
 input {
-    border-radius: 10px;
-    border: 1px solid #eee;
-    transition: 0.3s border-color;
-    padding: 10px;
-    max-width: 270px;
-}
-input{
-padding: 7px !important;
+    // padding: 10px;
+    // max-width: 270px;
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem !important;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
 
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:hover {
+        border: 1px solid #aaa;
+    }
+
+    &:active {
+        border: 1px solid #969696;
+    }
+
+    &:focus {
+        outline: 3px solid rgb(184, 205, 235);
+        border-width: 1px;
+        border-color: rgb(151 187 237) !important;
+    }
 }
+
 
 .txtAreaEmail,
 .asuntoEmail {
     width: 30rem;
 }
 
-input:hover {
-    border: 1px solid #aaa;
+
+
+input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+
+    &:focus {
+        outline: 3px solid rgb(184, 205, 235);
+        border-radius: 0.375rem;
+
+    }
 }
 
-input:active {
-    border: 1px solid #969696;
+.mr-2 {
+    margin-right: 1.5rem;
 }
 
 label {
     margin-right: 7px;
-    font-size: 0.965rem;
+    font-size: 1rem !important;
+    color: $fontColor !important;
 }
 
 .row {
@@ -298,11 +338,13 @@ label {
 #list table tbody tr:nth-child(even) {
     background-color: #f2f2f2
 }
+
 // Botones para desplegar modal
-.btnTriggerModal{
+.btnTriggerModal {
     cursor: pointer;
     color: $green-2;
 }
+
 // MODAL
 .modal-overlay {
     position: fixed;
@@ -317,10 +359,10 @@ label {
     overflow-y: auto;
     z-index: 0;
 
-  }
+}
 
-  
-  .modal {
+
+.modal {
     text-align: center;
     background-color: white;
     height: 51rem;
@@ -330,9 +372,10 @@ label {
     padding-bottom: 60px;
     border-radius: 20px;
     z-index: 0;
-    
-  }
-  .modal-sm {
+
+}
+
+.modal-sm {
     text-align: center;
     background-color: white;
     height: 8rem;
@@ -341,31 +384,39 @@ label {
     top: 150px;
     padding-bottom: 60px;
     border-radius: 20px;
-    z-index: 0;
-    
-  }
-  .close {
+    z-index: 9999 !important;
+
+}
+
+.close {
     cursor: pointer;
-    color:$green-2;
-  }
-  
-  
-  .check {
+    color: $green-2;
+}
+
+.danger-text {
+    font-size: 12px !important;
+    color: #ac003e;
+    font-weight: 400;
+    margin-left: 10px;
+}
+
+
+.check {
     width: 150px;
-  }
-  
-  h6 {
+}
+
+h6 {
     font-weight: 500;
     font-size: 28px;
     margin: 20px 0;
-  }
-  
-  p {
+}
+
+p {
     font-size: 16px;
     margin: 20px 0;
-  }
-  
-  .buttonConfirm {
+}
+
+.buttonConfirm {
     background-color: #ac003e;
     width: 150px;
     height: 40px;
@@ -373,64 +424,138 @@ label {
     font-size: 14px;
     border-radius: 16px;
     margin-top: 50px;
-  }
-  .modalHeader{
+}
+
+.modalHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 20px;
     padding-left: 20px;
     padding-right: 20px;
-  }
-  h4 {
+}
+
+h4 {
     font-weight: 500 !important;
     font-size: 20px !important;
     padding-bottom: 15px;
-  }
-  div:has(.shown){
-    #footer-component{
+}
+
+div:has(.shown) {
+    #footer-component {
         display: none;
     }
-  }
-.rowHeader{
-    color:#52bf90;
+}
+
+.rowHeader {
+    color: #52bf90;
     font-size: 18px;
     // padding-left:30px;
     border-bottom: 1.5px solid;
-    width:930px;
+    width: 930px;
     font-weight: 600;
-    margin-left:20px;
+    margin-left: 20px;
 }
-.rowModal{
-    
-    padding-left:30px;
-    margin-left:20px;
+
+.rowModal {
+
+    padding-left: 30px;
+    margin-left: 20px;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
 
     align-items: center;
     margin-bottom: 0px;
-    margin-right:45px;
+    margin-right: 45px;
 }
-.rowModalBtn{
+
+.rowModalBtn {
     display: flex;
     justify-content: end;
     flex-direction: row;
 
     align-items: center;
     margin-bottom: 0px;
-    margin-right:45px;
+    margin-right: 45px;
 }
-.lastRow{
+
+.lastRow {
     padding-bottom: 28px;
 }
-.mt-2{
-    padding-top:20px;
+
+.mt-2 {
+    padding-top: 20px;
 }
+
 .rowModalEmail {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+}
+
+// Multiselect
+.multiselect {
+    display: flex;
+    // justify-content: start;
+    align-items: center;
+    // word-wrap: break-word;
+    // white-space: pre-line;
+    // word-break: break-word;
+    // height: 40px;
+}
+
+.circleXMark,
+.dropdownChevron {
+    cursor: pointer;
+}
+
+.rightSelect,
+.dropdownChevron {
+    color: #c0c2ce;
+}
+
+.rightSelect {
+    margin-left: auto;
+}
+
+.circleXMark {
+    color: $green-3;
+
+    &:hover {
+        color: $fontColor;
+    }
+}
+
+.multiselectDropdown div:hover {
+    color: $green-2;
+    cursor: pointer;
+}
+
+.columnSelect {
+    width: 25rem;
+    // padding-left: 20px;
+}
+.leftSelect{
+    width: 90%;
+}
+
+.cheto {
+    background-color: #94ddbd;
+    color: #212529;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #94ddbd;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 5px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    white-space: pre-line;
+    word-break: keep-all;
+    word-wrap:normal;
+    display: inline;
+
+    // width: 120px;
 }
