@@ -98,7 +98,6 @@
           </div>
           <div class="row rowModal">
             <div class="column">
-              <div class="row">
                 <label for="txtName">Nombre</label>
                 <input
                   type="text"
@@ -108,7 +107,6 @@
                   :value="configurations[idModalToView].name"
                 />
                 <small class="danger-text" v-show="(msgAlert.includes('Error'))" >{{msgAlert}}</small>
-              </div>
             </div>
             <div class="column">
               <div class="row">
@@ -403,122 +401,122 @@ export default {
       idToEdit: null,
       msgAlert:"",
       configurations: [
-        // {
-        //   id: "1",
-        //   name: "Ejemplo",
-        //   custrecord_efx_pp_block_status: [
-        //     {
-        //       value: "1",
-        //       text: "Definitivos",
-        //     },
-        //   ],
-        //   custrecord_efx_pp_mail_body_error: "Ejemplo",
-        //   custrecord_efx_pp_mail_body: "Ejemplo",
-        //   custrecord_efx_pp_mandatory_ev: true,
-        //   custrecord_efx_pp_extencion_ev: "jpg,png,jpeg,rar",
-        //   isinactive: true,
-        //   custrecord_efx_pp_tran_limit: true,
-        //   custrecord_efx_pp_mandatory_pdf: true,
-        //   custrecord_efx_pp_mail_subject_error: "Ejemplo",
-        //   custrecord_efx_pp_mail_subjec: "Ejemplo",
-        //   custrecord_efx_pp_warn_message: "Ejemplo",
-        //   custrecord_efx_pp_warn_status: [
-        //     {
-        //       value: "1",
-        //       text: "Definitivos",
-        //     },
-        //   ],
-        //   custrecord_efx_pp_mandatory_xml: true,
-        // },
-        // {
-        //   id: "2",
-        //   name: "Nombrecito",
-        //   custrecord_efx_pp_block_status: [
-        //     {
-        //       value: "1",
-        //       text: "Definitivos",
-        //     },
-        //   ],
-        //   custrecord_efx_pp_mail_body_error:
-        //     "Cuerpo de correo de error ejemplo",
-        //   custrecord_efx_pp_mail_body: "Cuerpo de correo sin errores",
-        //   custrecord_efx_pp_mandatory_ev: true,
-        //   custrecord_efx_pp_extencion_ev: "jpeg,rar",
-        //   isinactive: true,
-        //   custrecord_efx_pp_tran_limit: true,
-        //   custrecord_efx_pp_mandatory_pdf: true,
-        //   custrecord_efx_pp_mail_subject_error: "Asunto de correo de error",
-        //   custrecord_efx_pp_mail_subjec: "Asunto del correo",
-        //   custrecord_efx_pp_warn_message: "Mensaje de alerta",
-        //   custrecord_efx_pp_warn_status: [
-        //     {
-        //       value: "1",
-        //       text: "Definitivos",
-        //     },
-        //   ],
-        //   custrecord_efx_pp_mandatory_xml: true,
-        // },
+        {
+          id: "1",
+          name: "Ejemplo",
+          custrecord_efx_pp_block_status: [
+            {
+              value: "1",
+              text: "Definitivos",
+            },
+          ],
+          custrecord_efx_pp_mail_body_error: "Ejemplo",
+          custrecord_efx_pp_mail_body: "Ejemplo",
+          custrecord_efx_pp_mandatory_ev: true,
+          custrecord_efx_pp_extencion_ev: "jpg,png,jpeg,rar",
+          isinactive: true,
+          custrecord_efx_pp_tran_limit: true,
+          custrecord_efx_pp_mandatory_pdf: true,
+          custrecord_efx_pp_mail_subject_error: "Ejemplo",
+          custrecord_efx_pp_mail_subjec: "Ejemplo",
+          custrecord_efx_pp_warn_message: "Ejemplo",
+          custrecord_efx_pp_warn_status: [
+            {
+              value: "1",
+              text: "Definitivos",
+            },
+          ],
+          custrecord_efx_pp_mandatory_xml: true,
+        },
+        {
+          id: "2",
+          name: "Nombrecito",
+          custrecord_efx_pp_block_status: [
+            {
+              value: "1",
+              text: "Definitivos",
+            },
+          ],
+          custrecord_efx_pp_mail_body_error:
+            "Cuerpo de correo de error ejemplo",
+          custrecord_efx_pp_mail_body: "Cuerpo de correo sin errores",
+          custrecord_efx_pp_mandatory_ev: true,
+          custrecord_efx_pp_extencion_ev: "jpeg,rar",
+          isinactive: true,
+          custrecord_efx_pp_tran_limit: true,
+          custrecord_efx_pp_mandatory_pdf: true,
+          custrecord_efx_pp_mail_subject_error: "Asunto de correo de error",
+          custrecord_efx_pp_mail_subjec: "Asunto del correo",
+          custrecord_efx_pp_warn_message: "Mensaje de alerta",
+          custrecord_efx_pp_warn_status: [
+            {
+              value: "1",
+              text: "Definitivos",
+            },
+          ],
+          custrecord_efx_pp_mandatory_xml: true,
+        },
       ],
       showModal: false,
       showModalSuccess: false,
       idModalToView: 0,
       // *******************VARIABLES DE BLOCK STATUS LCO*************************
       blockStatusList: [
-        // {
-        //   value: "1",
-        //   text: "Definitivos2",
-        // },
-        // {
-        //   value: "2",
-        //   text: "Desvirtuados",
-        // },
-        // {
-        //   value: "3",
-        //   text: "Presuntos",
-        // },
-        // {
-        //   value: "4",
-        //   text: "Sentencias favorables",
-        // },
+        {
+          value: "1",
+          text: "Definitivos2",
+        },
+        {
+          value: "2",
+          text: "Desvirtuados",
+        },
+        {
+          value: "3",
+          text: "Presuntos",
+        },
+        {
+          value: "4",
+          text: "Sentencias favorables",
+        },
       ],
       selectedBlockListConfig: [
-        // {
-        //   value: "1,2,4",
-        //   text: "Definitivos2,Desvirtuados,Sentencias favorables",
-        // },
+        {
+          value: "1,2,4",
+          text: "Definitivos2,Desvirtuados,Sentencias favorables",
+        },
       ],
       blockStatusListNew: [],
       // *******************VARIABLES DE WARNING STATUS *************************
       warningStatusList: [
-        // {
-        //   value: "1",
-        //   text: "Definitivos2",
-        // },
-        // {
-        //   value: "2",
-        //   text: "Desvirtuados",
-        // },
-        // {
-        //   value: "3",
-        //   text: "Presuntos",
-        // },
-        // {
-        //   value: "4",
-        //   text: "Sentencias favorables",
-        // },
+        {
+          value: "1",
+          text: "Definitivos2",
+        },
+        {
+          value: "2",
+          text: "Desvirtuados",
+        },
+        {
+          value: "3",
+          text: "Presuntos",
+        },
+        {
+          value: "4",
+          text: "Sentencias favorables",
+        },
       ],
       selectedWarningListConfig: [
-        // {
-        //   value: "1,2,4",
-        //   text: "Definitivos2,Desvirtuados,Sentencias favorables",
-        // },
+        {
+          value: "1,2,4",
+          text: "Definitivos2,Desvirtuados,Sentencias favorables",
+        },
       ],
       warningStatusListNew: [],
     };
   },
   created() {
-    this.getConfigurations();
-    this.getBlockStatusList();
+    // this.getConfigurations();
+    // this.getBlockStatusList();
   },
   methods: {
     onClickBtn() {
