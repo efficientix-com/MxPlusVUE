@@ -63,14 +63,13 @@
     >
       <div class="modal-sm" @click.stop>
         <div class="modalHeader">
-          
           <div class="close" @click="showModalSuccess = !showModalSuccess">
             <font-awesome-icon icon="fa-solid fa-rectangle-xmark" size="3x" />
           </div>
         </div>
         <div class="modalBody">
           <div>
-            <h4>{{msgAlert}}</h4>
+            <h4>{{ msgAlert }}</h4>
           </div>
         </div>
       </div>
@@ -92,156 +91,163 @@
           </div>
         </div>
         <div class="modalBody">
-          <!-- Información de generales -->
-          <div class="row rowHeader">
-            <div class="column">Generales</div>
-          </div>
-          <div class="row rowModal">
-            <div class="column">
-                <label for="txtName">Nombre</label>
-                <input
-                  type="text"
-                  name="txtName"
-                  ref="name"
-                  :disabled="isBeingEdited"
-                  :value="configurations[idModalToView].name"
-                />
-                <small class="danger-text" v-show="(msgAlert.includes('Error'))" >{{msgAlert}}</small>
+            <div class="modalNav">
+              <h5>Generales</h5>
+              <h5>Envío de correos</h5>
+              <h5>Listas negras</h5>
+              <h5>Archivos</h5>
             </div>
-            <div class="column">
-              <div class="row">
-                <input
-                  type="checkbox"
-                  name="inactiveCheck"
-                  ref="isinactive"
-                  id="inactiveCheck"
-                  :disabled="isBeingEdited"
-                  :checked="configurations[idModalToView].isinactive"
-                />
-                <label for="inactiveCheck">Inactivo</label>
+            <div class="modalContent">
+              <!-- Información de generales -->
+              <div class="row rowHeader">
+                <div class="column">Generales</div>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="column">
               <div class="row rowModal">
-                <input
-                  type="checkbox"
-                  name="limitTransQuantity"
-                  id="limitTransQuantity"
-                  ref="custrecord_efx_pp_tran_limit"
-                  :disabled="isBeingEdited"
-                  :checked="
-                    configurations[idModalToView].custrecord_efx_pp_tran_limit
-                  "
-                />
-                <label for="limitTransQuantity"
-                  >Limitar a cantidad en transacción</label
-                >
-              </div>
-            </div>
-          </div>
-          <!--  Envío de correos-->
-          <div class="row rowHeader">
-            <div class="column">Envío de correos</div>
-          </div>
-          <div class="row rowModal">
-            <div class="email">
-              <div class="column">
-                <div class="row">
-                  <label for="txtAsuntoCorreo">Título de correo</label>
+                <div class="column">
+                  <label for="txtName">Nombre</label>
                   <input
                     type="text"
-                    name="txtAsuntoCorreo"
-                    id="txtAsuntoCorreo"
-                    ref="custrecord_efx_pp_mail_subjec"
-                    class="asuntoEmail"
+                    name="txtName"
+                    ref="name"
                     :disabled="isBeingEdited"
-                    :value="
-                      configurations[idModalToView]
-                        .custrecord_efx_pp_mail_subjec
-                    "
+                    :value="configurations[idModalToView].name"
                   />
+                  <small
+                    class="danger-text"
+                    v-show="msgAlert.includes('Error')"
+                    >{{ msgAlert }}</small
+                  >
+                </div>
+                <div class="column">
+                  <div class="row">
+                    <input
+                      type="checkbox"
+                      name="inactiveCheck"
+                      ref="isinactive"
+                      id="inactiveCheck"
+                      :disabled="isBeingEdited"
+                      :checked="configurations[idModalToView].isinactive"
+                    />
+                    <label for="inactiveCheck">Inactivo</label>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="email">
-              <div class="column">
-                <div class="rowModalEmail">
-                  <label for="txtCorreo">Cuerpo de correo</label>
-                  <textarea
-                    name="txtCorreo"
-                    id="txtCorreo"
-                    ref="custrecord_efx_pp_mail_body"
-                    class="txtAreaEmail"
-                    rows="5"
-                    :disabled="isBeingEdited"
-                    :value="
-                      configurations[idModalToView].custrecord_efx_pp_mail_body
-                    "
-                  ></textarea>
+              <div class="row">
+                <div class="column">
+                  <div class="row rowModal">
+                    <input
+                      type="checkbox"
+                      name="limitTransQuantity"
+                      id="limitTransQuantity"
+                      ref="custrecord_efx_pp_tran_limit"
+                      :disabled="isBeingEdited"
+                      :checked="
+                        configurations[idModalToView]
+                          .custrecord_efx_pp_tran_limit
+                      "
+                    />
+                    <label for="limitTransQuantity"
+                      >Limitar a cantidad en transacción</label
+                    >
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="row rowModal">
-            <div class="email">
-              <div class="column">
-                <div class="row">
-                  <label for="txtAsuntoCorreo">Título de correo error</label>
-                  <input
-                    type="text"
-                    name="txtAsuntoCorreoError"
-                    id="txtAsuntoCorreoError"
-                    ref="custrecord_efx_pp_mail_subject_error"
-                    class="asuntoEmail"
-                    :disabled="isBeingEdited"
-                    :value="
-                      configurations[idModalToView]
-                        .custrecord_efx_pp_mail_subject_error
-                    "
-                  />
+              <!--  Envío de correos-->
+              <div class="row rowHeader">
+                <div class="column">Envío de correos</div>
+              </div>
+              <div class="row rowModal">
+                <div class="email">
+                  <div class="column">
+                      <label for="txtAsuntoCorreo">Título de correo</label>
+                      <input
+                        type="text"
+                        name="txtAsuntoCorreo"
+                        id="txtAsuntoCorreo"
+                        ref="custrecord_efx_pp_mail_subjec"
+                        class="asuntoEmail"
+                        :disabled="isBeingEdited"
+                        :value="
+                          configurations[idModalToView]
+                            .custrecord_efx_pp_mail_subjec
+                        "
+                      />
+                  </div>
+                </div>
+                <div class="email">
+                  <div class="column">
+                      <label for="txtCorreo">Cuerpo de correo</label>
+                      <textarea
+                        name="txtCorreo"
+                        id="txtCorreo"
+                        ref="custrecord_efx_pp_mail_body"
+                        class="txtAreaEmail"
+                        rows="5"
+                        :disabled="isBeingEdited"
+                        :value="
+                          configurations[idModalToView]
+                            .custrecord_efx_pp_mail_body
+                        "
+                      ></textarea>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="email">
-              <div class="column">
-                <div class="rowModalEmail">
-                  <label for="txtCorreo">Cuerpo de correo error</label>
-                  <textarea
-                    name="txtCorreoError"
-                    id="txtCorreoError"
-                    ref="custrecord_efx_pp_mail_body_error"
-                    class="txtAreaEmail"
-                    rows="5"
-                    :disabled="isBeingEdited"
-                    :value="
-                      configurations[idModalToView]
-                        .custrecord_efx_pp_mail_body_error
-                    "
-                  ></textarea>
+              <div class="row rowModal">
+                <div class="email">
+                  <div class="column">
+                      <label for="txtAsuntoCorreo"
+                        >Título de correo error</label
+                      >
+                      <input
+                        type="text"
+                        name="txtAsuntoCorreoError"
+                        id="txtAsuntoCorreoError"
+                        ref="custrecord_efx_pp_mail_subject_error"
+                        class="asuntoEmail"
+                        :disabled="isBeingEdited"
+                        :value="
+                          configurations[idModalToView]
+                            .custrecord_efx_pp_mail_subject_error
+                        "
+                      />
+                    </div>
+                </div>
+                <div class="email">
+                  <div class="column">
+                      <label for="txtCorreo">Cuerpo de correo error</label>
+                      <textarea
+                        name="txtCorreoError"
+                        id="txtCorreoError"
+                        ref="custrecord_efx_pp_mail_body_error"
+                        class="txtAreaEmail"
+                        rows="5"
+                        :disabled="isBeingEdited"
+                        :value="
+                          configurations[idModalToView]
+                            .custrecord_efx_pp_mail_body_error
+                        "
+                      ></textarea>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <!--  Listas Negras-->
-          <div class="row rowHeader">
-            <div class="column">Listas Negras</div>
-          </div>
-          <div class="row rowModal">
-            <div class="column">
-              <div>
-                <label for="blockStatus">Block Status</label>
+              <!--  Listas Negras-->
+              <div class="row rowHeader">
+                <div class="column">Listas Negras</div>
               </div>
-              <div>
-                <select
-                  name="blockStatus"
-                  id="blockStatus"
-                  ref="custrecord_efx_pp_block_status"
-                  multiple
-                  :disabled="isBeingEdited"
-                >
-                  <!-- <option
+              <div class="row rowModal">
+                <div class="column">
+                  <div>
+                    <label for="blockStatus">Block Status</label>
+                  </div>
+                  <div>
+                    <select
+                      name="blockStatus"
+                      id="blockStatus"
+                      ref="custrecord_efx_pp_block_status"
+                      multiple
+                      :disabled="isBeingEdited"
+                    >
+                      <!-- <option
                     :value="
                       configurations[idModalToView]
                         .custrecord_efx_pp_block_status[0].value
@@ -253,137 +259,141 @@
                         .custrecord_efx_pp_block_status[0].text
                     }}
                   </option> -->
-                  <option
-                    :selected="op.isSelected"
-                    :value="op.value"
-                    v-for="op in blockStatusListNew"
-                    :key="op.value"
-                  >
-                    {{ op.text }}
-                  </option>
-                </select>
+                      <option
+                        :selected="op.isSelected"
+                        :value="op.value"
+                        v-for="op in blockStatusListNew"
+                        :key="op.value"
+                      >
+                        {{ op.text }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="column">
+                  <div>
+                    <label for="warningStatus">Warning Status</label>
+                  </div>
+                  <div>
+                    <select
+                      name="warningStatus"
+                      id="warningStatus"
+                      multiple
+                      ref="custrecord_efx_pp_warn_status"
+                      :disabled="isBeingEdited"
+                    >
+                      <option
+                        :selected="op.isSelected"
+                        :value="op.value"
+                        v-for="op in warningStatusListNew"
+                        :key="op.value"
+                      >
+                        {{ op.text }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="column">
+                  <div>
+                    <label for="txtWarning">Warning message</label>
+                  </div>
+                  <div>
+                    <textarea
+                      name="txtWarning"
+                      id="txtWarning"
+                      class="txtAreaEmail"
+                      rows="5"
+                      ref="custrecord_efx_pp_warn_message"
+                      :disabled="isBeingEdited"
+                      :value="
+                        configurations[idModalToView]
+                          .custrecord_efx_pp_warn_message
+                      "
+                    ></textarea>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="column">
-              <div>
-                <label for="warningStatus">Warning Status</label>
+              <!--  Archivos-->
+              <div class="row rowHeader mt-2">
+                <div class="column">Archivos</div>
               </div>
-              <div>
-                <select
-                  name="warningStatus"
-                  id="warningStatus"
-                  multiple
-                  ref="custrecord_efx_pp_warn_status"
-                  :disabled="isBeingEdited"
-                >
-                  <option
-                    :selected="op.isSelected"
-                    :value="op.value"
-                    v-for="op in warningStatusListNew"
-                    :key="op.value"
-                  >
-                    {{ op.text }}
-                  </option>
-                </select>
+              <div class="row rowModal">
+                <div class="column">
+                  <div class="row">
+                    <input
+                      type="checkbox"
+                      name="pdfMandatory"
+                      id="pdfMandatory"
+                      ref="custrecord_efx_pp_mandatory_pdf"
+                      :disabled="isBeingEdited"
+                      :checked="
+                        configurations[idModalToView]
+                          .custrecord_efx_pp_mandatory_pdf
+                      "
+                    />
+                    <label for="pdfMandatory">PDF Mandatory</label>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="row">
+                    <input
+                      type="checkbox"
+                      name="xmlMandatory"
+                      id="xmlMandatory"
+                      ref="custrecord_efx_pp_mandatory_xml"
+                      :disabled="isBeingEdited"
+                      :checked="
+                        configurations[idModalToView]
+                          .custrecord_efx_pp_mandatory_xml
+                      "
+                    />
+                    <label for="xmlMandatory">XML Mandatory</label>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="column">
-              <div>
-                <label for="txtWarning">Warning message</label>
+              <div class="row rowModal">
+                <div class="column">
+                  <div class="row">
+                    <input
+                      type="checkbox"
+                      name="evidenceMandatory"
+                      id="evidenceMandatory"
+                      ref="custrecord_efx_pp_mandatory_ev"
+                      :disabled="isBeingEdited"
+                      :checked="
+                        configurations[idModalToView]
+                          .custrecord_efx_pp_mandatory_ev
+                      "
+                    />
+                    <label for="evidenceMandatory">Evidence Mandatory</label>
+                  </div>
+                </div>
+                <div class="column">
+                  <div class="row">
+                    <label for="txtExtension">Ext. for evidence</label>
+                    <input
+                      type="text"
+                      name="txtExtension"
+                      ref="custrecord_efx_pp_extencion_ev"
+                      :disabled="isBeingEdited"
+                      :value="
+                        configurations[idModalToView]
+                          .custrecord_efx_pp_extencion_ev
+                      "
+                    />
+                  </div>
+                </div>
               </div>
-              <div>
-                <textarea
-                  name="txtWarning"
-                  id="txtWarning"
-                  class="txtAreaEmail"
-                  rows="5"
-                  ref="custrecord_efx_pp_warn_message"
-                  :disabled="isBeingEdited"
-                  :value="
-                    configurations[idModalToView].custrecord_efx_pp_warn_message
-                  "
-                ></textarea>
-              </div>
-            </div>
-          </div>
-          <!--  Archivos-->
-          <div class="row rowHeader mt-2">
-            <div class="column">Archivos</div>
-          </div>
-          <div class="row rowModal">
-            <div class="column">
-              <div class="row">
-                <input
-                  type="checkbox"
-                  name="pdfMandatory"
-                  id="pdfMandatory"
-                  ref="custrecord_efx_pp_mandatory_pdf"
-                  :disabled="isBeingEdited"
-                  :checked="
-                    configurations[idModalToView]
-                      .custrecord_efx_pp_mandatory_pdf
-                  "
-                />
-                <label for="pdfMandatory">PDF Mandatory</label>
-              </div>
-            </div>
-            <div class="column">
-              <div class="row">
-                <input
-                  type="checkbox"
-                  name="xmlMandatory"
-                  id="xmlMandatory"
-                  ref="custrecord_efx_pp_mandatory_xml"
-                  :disabled="isBeingEdited"
-                  :checked="
-                    configurations[idModalToView]
-                      .custrecord_efx_pp_mandatory_xml
-                  "
-                />
-                <label for="xmlMandatory">XML Mandatory</label>
-              </div>
-            </div>
-          </div>
-          <div class="row rowModal">
-            <div class="column">
-              <div class="row">
-                <input
-                  type="checkbox"
-                  name="evidenceMandatory"
-                  id="evidenceMandatory"
-                  ref="custrecord_efx_pp_mandatory_ev"
-                  :disabled="isBeingEdited"
-                  :checked="
-                    configurations[idModalToView].custrecord_efx_pp_mandatory_ev
-                  "
-                />
-                <label for="evidenceMandatory">Evidence Mandatory</label>
-              </div>
-            </div>
-            <div class="column">
-              <div class="row">
-                <label for="txtExtension">Ext. for evidence</label>
-                <input
-                  type="text"
-                  name="txtExtension"
-                  ref="custrecord_efx_pp_extencion_ev"
-                  :disabled="isBeingEdited"
-                  :value="
-                    configurations[idModalToView].custrecord_efx_pp_extencion_ev
-                  "
-                />
-              </div>
-            </div>
-          </div>
-          <div class="row rowModalBtn" v-show="!isBeingEdited">
-            <div class="column">
-              <div class="row">
-                <div class="btn btn--green-1" @click="editRecord(idToEdit)">
-                  Guardar
+              <div class="row rowModalBtn" v-show="!isBeingEdited">
+                <div class="column">
+                  <div class="row">
+                    <div class="btn btn--green-1" @click="editRecord(idToEdit)">
+                      Guardar
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -399,7 +409,13 @@ export default {
     return {
       isBeingEdited: true,
       idToEdit: null,
-      msgAlert:"",
+      msgAlert: "",
+      navModal:{
+        generales:true,
+        correos:false,
+        listasNegras:false,
+        archivos:false
+      },
       configurations: [
         {
           id: "1",
@@ -805,10 +821,10 @@ export default {
         .request(t)
         .then((b) => {
           console.log("RESPONSE FROM NS: ", b.data);
-          this.msgAlert=b.data;
-          if(this.msgAlert.includes('Error')){
+          this.msgAlert = b.data;
+          if (this.msgAlert.includes("Error")) {
             this.showModalSuccess = false;
-          }else{
+          } else {
             this.showModal = false;
             this.showModalSuccess = true;
             this.getBlockStatusList();

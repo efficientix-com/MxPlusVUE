@@ -8,6 +8,7 @@ $h3Size: 25px !important; // Está en important porque Netsuite sobreescribe
 $textWhite: #f2f2f2;
 $green-2: #52bf90;
 $green-3: #2fb179;
+$gray-1:#969696;
 $fontColor: #222528;
 
 
@@ -235,7 +236,7 @@ input {
     }
 
     &:active {
-        border: 1px solid #969696;
+        border: 1px solid $gray-1;
     }
 
     &:focus {
@@ -245,11 +246,6 @@ input {
     }
 }
 
-
-.txtAreaEmail,
-.asuntoEmail {
-    width: 30rem;
-}
 
 
 
@@ -452,7 +448,7 @@ div:has(.shown) {
     font-size: 18px;
     // padding-left:30px;
     border-bottom: 1.5px solid;
-    width: 930px;
+    // width: 930px;
     font-weight: 600;
     margin-left: 20px;
 }
@@ -558,4 +554,34 @@ div:has(.shown) {
     display: inline;
 
     // width: 120px;
+}
+// Modal content
+.modalContent{
+    grid-column: 2 / 3;
+    grid-row: 1 / 3;
+    border-top: 1px solid $gray-1;
+    border-left:1px solid $gray-1;
+
+}
+.modalNav{
+    height: 100%;
+    position: relative;
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    text-align: left;
+    margin-left:20px;
+    border-top: 1px solid $gray-1;
+    h5{
+        font-size:15px;
+        color: $green-3;
+        font-weight: 400;
+        cursor: pointer;
+        &:hover{
+            color:$fontColor;
+        }
+    }
+}
+.modalBody{
+    display: grid;
+    grid-template-columns: 10rem 51rem;
 }
