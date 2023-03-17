@@ -356,14 +356,12 @@ export default {
     },
     pushSelectedBlockList(key, text) {
       let exists = false;
-
       for (let i = 0; i < this.selectedBlockStatusList.length; i++) {
         if (this.selectedBlockStatusList[i].value == key) {
           exists = true;
           break;
         }
       }
-
       if (exists == false) {
         this.selectedBlockStatusList.push({
           value: key,
